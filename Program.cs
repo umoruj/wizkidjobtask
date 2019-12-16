@@ -29,7 +29,7 @@ namespace wizkidjobtask
         public static List<int> DoOperation(int value) {
             List<int> result = new List<int>();
             int initialValue = 0;
-            while(initialValue < 100) {
+            while(initialValue <= 100) {
                 if(initialValue % value == 0) {
                     result.Add(initialValue);
                 }
