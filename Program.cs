@@ -3,6 +3,8 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace wizkidjobtask
 {
@@ -27,7 +29,7 @@ namespace wizkidjobtask
         public static List<int> DoOperation(int value) {
             List<int> result = new List<int>();
             int initialValue = 0;
-            while(initialValue <= 100) {
+            while(initialValue < 100) {
                 if(initialValue % value == 0) {
                     result.Add(initialValue);
                 }
@@ -35,6 +37,32 @@ namespace wizkidjobtask
             }
 
             return result;
+        }
+    }
+
+    class FindReplaceEmail{
+        public static List<string> DoOperation(string value) {
+            List<string> result = new List<string>();
+            const string emailPattern =
+           @"(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
+           + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
+             + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+           + @"([a-zA-Z]+[\w-]+\.)+[a-zA-Z]{2,4})";
+
+           Regex rx = new Regex(emailPattern,  RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+           MatchCollection matches = rx.Matches(value);
+           int noOfMatches = matches.Count;
+           int initialValue = 0;
+
+           while(initialValue < noOfMatches) {
+               if (new EmailAddressAttribute().IsValid(matches[initialValue].Value.ToString())){
+                   result.Add(matches[initialValue].Value.ToString());
+               }
+               initialValue++;
+           }
+
+           return result;
         }
     }
     class Program
@@ -53,6 +81,7 @@ namespace wizkidjobtask
                 Console.WriteLine("Choose an operation from the following list:");
                 Console.WriteLine("\ta - Palidrome check");
                 Console.WriteLine("\tb - Multiples check");
+                Console.WriteLine("\tc - Find and Replace Emails");
                 Console.Write("Your option? ");
                 stringInput1 = Console.ReadLine();
 
@@ -119,6 +148,27 @@ namespace wizkidjobtask
                     break;
                     default:
                     Console.WriteLine("An invalid selection was made");
+                    break;
+                    case "c":
+                    string findReplaceString = "";
+                    Console.WriteLine("Please enter string value: ");
+                    findReplaceString = Console.ReadLine();
+                    while (string.IsNullOrEmpty(findReplaceString)){
+                        Console.Write("This is not valid input. Please enter string value: ");
+                        findReplaceString = Console.ReadLine();
+                    }
+
+                    List<string> findreplacearray = new List<string>();
+                    findreplacearray = FindReplaceEmail.DoOperation(findReplaceString);
+                    if (findreplacearray.Count > 0) {
+                        Console.WriteLine("\n");
+                        Console.WriteLine("valid email: " + string.Join("\t", findreplacearray));
+                    } else {
+                        Console.WriteLine("\n");
+                        Console.WriteLine("No valid email found");
+                    }
+                    
+
                     break;
                 }
 
