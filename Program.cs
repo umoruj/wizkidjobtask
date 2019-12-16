@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace wizkidjobtask
 {
@@ -18,6 +20,21 @@ namespace wizkidjobtask
                 return noSpecialCharacters.SequenceEqual(noSpecialCharacters.Reverse());
             }
             
+        }
+    }
+
+    class Multiples {
+        public static List<int> DoOperation(int value) {
+            List<int> result = new List<int>();
+            int initialValue = 0;
+            while(initialValue <= 100) {
+                if(initialValue % value == 0) {
+                    result.Add(initialValue);
+                }
+                initialValue++;
+            }
+
+            return result;
         }
     }
     class Program
@@ -59,8 +76,46 @@ namespace wizkidjobtask
                         Console.WriteLine("The word or sentence is not a palindrome");
                     }
                     break;
+
                     case "b":
-                    Console.WriteLine("b was chosen");
+                    // ask user to make a choice
+                    string multipleString = "";
+                    Console.WriteLine("Choose an operation from the following list to show multiples:");
+                    Console.WriteLine("\tFoo - multiple of 3");
+                    Console.WriteLine("\tBar - multiples of 5");
+                    Console.WriteLine("\tFooBar - multiples of both 3 and 5");
+                    Console.Write("Your option? ");
+                    multipleString = Console.ReadLine();
+
+                    while (string.IsNullOrEmpty(multipleString)){
+                        Console.Write("This is not valid input. Please enter a selection: ");
+                        multipleString = Console.ReadLine();
+                    }
+
+                    switch(multipleString) {
+                        case "Foo":
+                        List<int> resultthree = new List<int>();
+                        resultthree = Multiples.DoOperation(3);
+                        Console.WriteLine(string.Join("\t", resultthree));
+                        break;
+                        case "Bar":
+                        List<int> resultfive = new List<int>();
+                        resultfive = Multiples.DoOperation(5);
+                        Console.WriteLine(string.Join("\t", resultfive));
+                        break;
+                        case "FooBar":
+                        List<int> resultthreefirst = new List<int>();
+                        List<int> resultfiveSecond = new List<int>();
+                        resultthreefirst = Multiples.DoOperation(3);
+                        resultfiveSecond = Multiples.DoOperation(5);
+                        var total = resultthreefirst.Union(resultfiveSecond);
+                        Console.WriteLine(string.Join("\t", total.OrderBy(o=>o).ToList()));
+                        break;
+                        default:
+                        Console.WriteLine("An invalid selection was made");
+                        break;
+                    }
+
                     break;
                     default:
                     Console.WriteLine("An invalid selection was made");
