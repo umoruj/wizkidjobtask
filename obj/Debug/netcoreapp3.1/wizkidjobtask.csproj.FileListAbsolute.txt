@@ -1,0 +1,11 @@
+/Users/qasimahmed/csharpprojects/wizkidjobtask/bin/Debug/netcoreapp3.1/wizkidjobtask
+/Users/qasimahmed/csharpprojects/wizkidjobtask/bin/Debug/netcoreapp3.1/wizkidjobtask.deps.json
+/Users/qasimahmed/csharpprojects/wizkidjobtask/bin/Debug/netcoreapp3.1/wizkidjobtask.runtimeconfig.json
+/Users/qasimahmed/csharpprojects/wizkidjobtask/bin/Debug/netcoreapp3.1/wizkidjobtask.runtimeconfig.dev.json
+/Users/qasimahmed/csharpprojects/wizkidjobtask/bin/Debug/netcoreapp3.1/wizkidjobtask.dll
+/Users/qasimahmed/csharpprojects/wizkidjobtask/bin/Debug/netcoreapp3.1/wizkidjobtask.pdb
+/Users/qasimahmed/csharpprojects/wizkidjobtask/obj/Debug/netcoreapp3.1/wizkidjobtask.csprojAssemblyReference.cache
+/Users/qasimahmed/csharpprojects/wizkidjobtask/obj/Debug/netcoreapp3.1/wizkidjobtask.AssemblyInfoInputs.cache
+/Users/qasimahmed/csharpprojects/wizkidjobtask/obj/Debug/netcoreapp3.1/wizkidjobtask.AssemblyInfo.cs
+/Users/qasimahmed/csharpprojects/wizkidjobtask/obj/Debug/netcoreapp3.1/wizkidjobtask.dll
+/Users/qasimahmed/csharpprojects/wizkidjobtask/obj/Debug/netcoreapp3.1/wizkidjobtask.pdb
